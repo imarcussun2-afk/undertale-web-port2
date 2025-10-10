@@ -885,13 +885,16 @@ if (/Android|iPhone|iPod/i.test(navigator.userAgent)) {
 
 
 
+let isMultiplayer = false; // set to true if in multiplayer mode
+
 document.addEventListener("visibilitychange", (event) => {
-  if (document.visibilityState != "visible") {
+  if (document.visibilityState !== "visible") {
     pause();
-  } else if (isMultiplayer()) {
+  } else if (isMultiplayer) {
     resume();
   }
 });
+
 
 
 window.addEventListener("load", (event) => {
