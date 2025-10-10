@@ -884,19 +884,18 @@ if (/Android|iPhone|iPod/i.test(navigator.userAgent)) {
 }
 
 
-if (typeof window.isMultiplayer === "undefined") {
-  window.isMultiplayer = function() {
-    return false; // always single-player
-  };
-}
 
-document.addEventListener("visibilitychange", (event) => {
+// Pause and resume the game when tab visibility changes
+document.addEventListener("visibilitychange", () => {
   if (document.visibilityState !== "visible") {
-    pause();
-  } else if (isMultiplayer()) {
-    resume();
+    // Pause the game when the tab is hidden
+    if (typeof pause === "function") pause();
+  } else {
+    // Resume the game only if it was paused manually by the visibility change
+    if (typeof resume === "function") resume();
   }
 });
+
 
 
 
