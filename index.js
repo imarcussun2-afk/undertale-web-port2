@@ -1,4 +1,3 @@
-
 const CHANGE_ASPECT_RATIO = true;
 
 var bodyElement = document.getElementsByTagName("body")[0];
