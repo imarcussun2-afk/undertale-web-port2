@@ -885,12 +885,6 @@ if (/Android|iPhone|iPod/i.test(navigator.userAgent)) {
 
 
 
-let multiplayer = false; // or false, depending on your game
-
-function isMultiplayer() {
-  return multiplayer;
-}
-
 document.addEventListener("visibilitychange", (event) => {
   if (document.visibilityState !== "visible") {
     pause();
