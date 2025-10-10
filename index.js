@@ -885,21 +885,14 @@ if (/Android|iPhone|iPod/i.test(navigator.userAgent)) {
 
 
 
-let tabPaused = false;
-
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState !== "visible") {
-    if (typeof pause === "function") {
-      pause();              // stop game loop
-      tabPaused = true;     // mark that we paused manually
-    }
-  } else if (tabPaused) {
-    if (typeof resume === "function") {
-      resume();             // resume only once
-      tabPaused = false;    // reset flag
-    }
+    // Pause game when tab is hidden
+    if (typeof pause === "function") pause();
   }
+  // Don't resume manually — GameMaker handles it automatically
 });
+
 
 
 
