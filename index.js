@@ -884,6 +884,11 @@ if (/Android|iPhone|iPod/i.test(navigator.userAgent)) {
 }
 
 
+if (typeof window.isMultiplayer === "undefined") {
+  window.isMultiplayer = function() {
+    return false; // always single-player
+  };
+}
 
 document.addEventListener("visibilitychange", (event) => {
   if (document.visibilityState !== "visible") {
