@@ -885,14 +885,19 @@ if (/Android|iPhone|iPod/i.test(navigator.userAgent)) {
 
 
 
-// Pause and resume the game when tab visibility changes
+let tabPaused = false;
+
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState !== "visible") {
-    // Pause the game when the tab is hidden
-    if (typeof pause === "function") pause();
-  } else {
-    // Resume the game only if it was paused manually by the visibility change
-    if (typeof resume === "function") resume();
+    if (typeof pause === "function") {
+      pause();              // stop game loop
+      tabPaused = true;     // mark that we paused manually
+    }
+  } else if (tabPaused) {
+    if (typeof resume === "function") {
+      resume();             // resume only once
+      tabPaused = false;    // reset flag
+    }
   }
 });
 
