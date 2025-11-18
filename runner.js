@@ -39,11 +39,6 @@ k.ENVIRONMENT_IS_PTHREAD || k.$ww || function(a) {
                 throw Error("NetworkError for: " + n);
             }
             ;
-            v.onload = function() {
-                if (200 == v.status || 304 == v.status || 206 == v.status || 0 == v.status && v.response)
-                    q(v.response);
-                else
-                    throw Error(v.statusText + " : " + v.responseURL);
             }
             ;
             v.send(null)
